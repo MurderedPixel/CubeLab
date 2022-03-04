@@ -15,7 +15,6 @@ public class billyDance : MonoBehaviour
         startCoordX = transform.position.x;
     }
 
-    // Update is called once per frame
     public void Update()
     {
         float y = Mathf.PingPong(Time.time * speed, 1) * distanceCoordY + startCoordY;
