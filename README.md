@@ -4,5 +4,5 @@
 - Totally new way of moving the cubes (currently working on)
 - Reworked code for speedpad
 - New, better sprites for Speed and Jump pad
-- Better level 20 and new level 22
+- Better level 21 and new level 22
 - Working Negative Section, but not in game yet (only maybe)
