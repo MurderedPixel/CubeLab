@@ -24,14 +24,6 @@ public class cubeGrab : MonoBehaviour
         {
             ChangeSprite(pickableSprite);
             if(canDestroy == false){canDestroy = true;}
-
-            while(canDestroy == true) {
-                while(Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Mouse0)) {
-                    meTrans.gameObject.GetComponent<Collider2D>().enabled = false;
-                    meTrans.position = new Vector2(playerTrans.position.x + 1f, playerTrans.position.y);
-                }
-            }
-            
         }
     }
 
@@ -43,22 +35,28 @@ public class cubeGrab : MonoBehaviour
            if(canDestroy == true){canDestroy = false;}
         }
     }
-/*
+
     private void Update() 
     {
         if(canDestroy == true)
         {
             if(Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Mouse0))
             {
-                meTrans.gameObject.GetComponent<Collider2D>().enabled = false;
+                meTrans.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                meTrans.gameObject.GetComponent<Collider2D>().isTrigger = true;
                 meTrans.position = new Vector2(playerTrans.position.x + 1f, playerTrans.position.y);
+                meTrans.gameObject.layer = 0;
+            }
+            else {
+                meTrans.gameObject.GetComponent<Collider2D>().isTrigger = false;
+                meTrans.gameObject.layer = 7;
+                meTrans.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1f;
             }
         }
         if(canDestroy == false) {
-            meTrans.gameObject.GetComponent<Collider2D>().enabled = true;
+            meTrans.gameObject.GetComponent<Collider2D>().isTrigger = false;
         }
     }
-*/
 
     //my own methods
     private void ChangeSprite(Sprite _newSprite)
