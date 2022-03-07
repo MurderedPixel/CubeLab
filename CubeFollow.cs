@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CubeFollow : MonoBehaviour{
 
+    public GameObject cube;
     private GameObject player;
-    private bool faceRight;
+    private bool faceRight = true;
+    public bool overlap = false;
 
     void Start(){
         player = GameObject.Find("player");
@@ -20,10 +22,15 @@ public class CubeFollow : MonoBehaviour{
         }
 
         if(faceRight == true){
-            this.transform.position = new Vector3(player.transform.position.x + 1f, player.transform.position.y, player.transform.position.z);
+            this.transform.position = new Vector3(player.transform.position.x + 1.0625f, player.transform.position.y, player.transform.position.z);
         }
         else if(faceRight == false){
-            this.transform.position = new Vector3(player.transform.position.x - 1f, player.transform.position.y, player.transform.position.z);
-        } 
+            this.transform.position = new Vector3(player.transform.position.x - 1.0625f, player.transform.position.y, player.transform.position.z);
+        }
+
+        if(Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Mouse0)){
+            Instantiate(cube, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 }
