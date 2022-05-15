@@ -28,7 +28,7 @@ public class GrabCube : MonoBehaviour
 
     void Update(){
         if(grabbable == true){
-            if(Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Mouse0)){
+            if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0)){
                 Vector3 currentTransform = thisTransform.position;
                 Instantiate(replacement, new Vector3(playerTransform.position.x + 1.0625f, playerTransform.position.y, playerTransform.position.z), Quaternion.identity);
                 Destroy(thisTransform.gameObject);
