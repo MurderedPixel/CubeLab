@@ -41,7 +41,7 @@ public class CubeFollow : MonoBehaviour{
         }
 
         //spawning da cube
-        if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0)){
+        if(Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Mouse0)){
             Instantiate(cube, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

@@ -10,7 +10,7 @@ public class switchTrigger : MonoBehaviour
     public bool isActive = false;
     public bool isLighSwitch = false;
     public bool isLever = true;
-    public bool updateActivated = false;
+    private bool updateActivated = false;
     
     private void OnTriggerEnter2D(Collider2D other)
     {

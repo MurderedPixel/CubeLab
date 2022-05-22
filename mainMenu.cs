@@ -15,7 +15,7 @@ public class mainMenu : MonoBehaviour
   public void PlayGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("level00");
     }
 
   public void LevelSelect()

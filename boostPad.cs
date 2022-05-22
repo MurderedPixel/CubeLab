@@ -4,32 +4,16 @@ using UnityEngine;
 
 public class boostPad : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public float boostForce = 10f;
-    //pm means it's from the PlayerMovement script
-    private float pmDefaultJumpForce;
-    private bool pmReversedGravity;
-
+    public float verticalBoostForce = 25f;
+    public float horizontalBoostForce = 0f;
+    
     //the bounce thingy
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            pmDefaultJumpForce = other.GetComponent<PlayerMovement>().defaultJumpForce;
-            pmReversedGravity = other.GetComponent<PlayerMovement>().reversedGravity;
+    void OnTriggerStay2D(Collider2D other){
+        if(other.CompareTag("Player") && Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
 
-
-            other.GetComponent<PlayerMovement>().defaultJumpForce += boostForce;
+        }
+        else{
+            other.attachedRigidbody.velocity = new Vector2(horizontalBoostForce, verticalBoostForce);
         }
     }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            other.GetComponent<PlayerMovement>().defaultJumpForce = pmDefaultJumpForce;
-        }
-        
-    }
-
 }

@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
+//VERY IMPORTANT CODE I MEAN IT
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 20f;
+    public float defaultMovementSpeed = 12f;
+    public float movementSpeed = 12f;
     public float jumpForce; //dont touch this, its not meant to be edited
     public float defaultJumpForce = 15f; //touch this
     public Vector3 boxcastSizeLower;
@@ -23,13 +25,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {   //transform-movement
-        /*
+        
         var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * movementSpeed;
-        */
-        //velocity-movement   
+        
+        /*
+        //velocity-movement
         float inputHorizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(inputHorizontal * movementSpeed, rb.velocity.y);
+        */
     }
 
     private void Update()

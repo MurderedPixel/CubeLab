@@ -38,6 +38,10 @@ public class menuButton : MonoBehaviour
         }
     }
 
+    public void SecretButtonUWU(){
+        SceneManager.LoadScene("levelDebug");
+    }
+
     public void GoToMenu()
     {
         SceneManager.LoadScene("Menu");
