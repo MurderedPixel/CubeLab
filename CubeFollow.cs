@@ -2,34 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//THIS SCRIPT IS FOR THE FUCKING PLACEHOLDER
 public class CubeFollow : MonoBehaviour{
 
+    public Sprite cantDropSprite;
+    public Sprite originalSprite;
     public GameObject cube;
     public SpriteRenderer thisSR;
+    public BoxCollider2D thisCollider2D;
     private GameObject player;
-    private Vector2 boxcastDirection;
     private bool faceRight = true;
+    public bool canDrop = true;
     private float distance = 1.0625f;
 
     void Start(){
         player = GameObject.Find("player");
     }
 
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("FullBarrier")) {
+            thisCollider2D.size = new Vector2(1.3f, 0.9f);
+        }
+        if (other.CompareTag("ground") || other.CompareTag("FullBarrier")) {
+            canDrop = false;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("FullBarrier")) {
+            thisCollider2D.size = new Vector2(0.9f, 0.9f);
+        }
+        if (other.CompareTag("ground") || other.CompareTag("FullBarrier")) {
+            canDrop = true;
+        }
+    }
+
+
     void Update(){
         //Moving the placeholder
         if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
             faceRight = true;
-            boxcastDirection = Vector2.right;
         }
         else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
             faceRight = false;
-            boxcastDirection = Vector2.left;
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Mouse1)){
-            distance = 2f;
+
+        if(canDrop == false) {
+            thisSR.sprite = cantDropSprite;
         }
-        else if(Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Mouse1)){
-            distance = 1.0625f;
+        if(canDrop == true) {
+            thisSR.sprite = originalSprite;
         }
 
         //actual code
@@ -40,12 +63,13 @@ public class CubeFollow : MonoBehaviour{
             this.transform.position = new Vector3(player.transform.position.x - distance, player.transform.position.y, player.transform.position.z);
         }
 
-        //spawning da cube
-        if(Input.GetKeyUp(KeyCode.E) || Input.GetKeyUp(KeyCode.Mouse0)){
-            Instantiate(cube, this.transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+        if(canDrop == true) {
+            //spawning da cube
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0)) {
+                Instantiate(cube, this.transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
         }
-
         //put boxcast here, yes it will be a pain in the ass
     }
 }
