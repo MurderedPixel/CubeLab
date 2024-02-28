@@ -18,3 +18,4 @@
 - The plot was partially scrapped, decided it really doesn't matter.
 - I was planning on adding the bossfight between this and negative section first, but I will probably add bossfights later on.
 - The preparations for Negative Section levels are going well.
+- This project is kind of paused indefinetly. I started making this during COVID, and now I am on an IT school, and my coding skills progressed a lot, I don't know if I want to work with the old code. I have plans to eventually either finish this or remake it.
